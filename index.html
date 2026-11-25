@@ -1,1 +1,1836 @@
 
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Caklempong & Gamelan | Warisan Muzik Tradisional Melayu</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --burgundy: #541c2b;
+  --dark: #32121b;
+  --gold: #c6a15b;
+  --cream: #f7f2e7;
+  --white: #fffdf8;
+  --text: #302b29;
+  --muted: #705747;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 100px;
+}
+
+body {
+  margin: 0;
+  background: var(--cream);
+  color: var(--text);
+  font-family: 'Inter', sans-serif;
+  line-height: 1.8;
+}
+
+h1, h2, h3 {
+  font-family: 'Playfair Display', Georgia, serif;
+  line-height: 1.3;
+}
+
+h2 {
+  font-size: clamp(30px, 5vw, 44px);
+  color: var(--burgundy);
+  margin-bottom: 24px;
+}
+
+h3 {
+  color: var(--burgundy);
+  font-size: 24px;
+  margin-top: 35px;
+}
+
+a {
+  color: var(--burgundy);
+}
+
+p {
+  margin-bottom: 20px;
+}
+
+#progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 4px;
+  width: 0;
+  background: var(--gold);
+  z-index: 2000;
+}
+
+header {
+  background: var(--dark);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  border-bottom: 1px solid var(--gold);
+}
+
+nav {
+  max-width: 1400px;
+  margin: auto;
+  padding: 16px 25px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.logo {
+  color: var(--gold);
+  font-family: 'Playfair Display', serif;
+  font-weight: bold;
+  letter-spacing: 1px;
+  text-decoration: none;
+}
+
+.nav-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+}
+
+.nav-links a {
+  color: var(--cream);
+  font-size: 13px;
+  text-decoration: none;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  color: var(--gold);
+}
+
+.menu-button {
+  display: none;
+  background: none;
+  color: var(--gold);
+  border: 1px solid var(--gold);
+  padding: 6px 12px;
+  cursor: pointer;
+  font-size: 22px;
+}
+
+.hero {
+  min-height: 85vh;
+  background:
+    radial-gradient(ellipse at top, #74364a, transparent 70%),
+    var(--dark);
+  color: var(--cream);
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 90px 25px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 18px;
+  border: 1px solid #c6a15b66;
+  pointer-events: none;
+}
+
+.hero-content {
+  max-width: 1000px;
+  position: relative;
+}
+
+.eyebrow {
+  color: var(--gold);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+}
+
+.hero h1 {
+  font-size: clamp(46px, 9vw, 100px);
+  margin: 24px 0;
+  color: var(--cream);
+}
+
+.hero h2 {
+  color: var(--gold);
+  font-size: clamp(20px, 4vw, 30px);
+  font-weight: 400;
+}
+
+.hero p {
+  color: #e8d8c4;
+}
+
+.ornament {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  color: var(--gold);
+  margin: 25px auto;
+}
+
+.ornament::before,
+.ornament::after {
+  content: "";
+  width: 100px;
+  height: 1px;
+  background: var(--gold);
+}
+
+.button {
+  display: inline-block;
+  background: var(--gold);
+  color: var(--dark);
+  text-decoration: none;
+  padding: 13px 23px;
+  border-radius: 4px;
+  border: 1px solid var(--gold);
+  margin: 8px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.button-outline {
+  background: transparent;
+  color: var(--gold);
+}
+
+.container {
+  max-width: 1160px;
+  margin: auto;
+  padding: 70px 25px;
+}
+
+.section-label {
+  font-size: 12px;
+  color: var(--muted);
+  letter-spacing: 3px;
+  font-weight: 600;
+}
+
+.section-alt {
+  background: #eee5d5;
+}
+
+.section-dark {
+  background: var(--dark);
+  color: var(--cream);
+}
+
+.section-dark h2,
+.section-dark h3,
+.section-dark a {
+  color: var(--gold);
+}
+
+.section-dark .section-label {
+  color: var(--gold);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0,1fr));
+  gap: 25px;
+  margin: 30px 0;
+}
+
+.grid-three {
+  grid-template-columns: repeat(3, minmax(0,1fr));
+}
+
+.card {
+  background: var(--white);
+  border: 1px solid #d8c6a5;
+  border-radius: 7px;
+  padding: 25px;
+  box-shadow: 0 6px 20px #32121b08;
+  color: var(--text);
+}
+
+.card h3 {
+  margin-top: 8px;
+}
+
+.placeholder {
+  background:
+    repeating-linear-gradient(
+      45deg,
+      #eae0cf,
+      #eae0cf 12px,
+      #e4d8c4 12px,
+      #e4d8c4 24px
+    );
+  min-height: 220px;
+  border: 1px dashed #aa9066;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: var(--muted);
+  padding: 25px;
+}
+
+.placeholder span {
+  font-size: 40px;
+}
+
+figure {
+  margin: 20px 0;
+}
+
+figcaption {
+  font-size: 12px;
+  color: var(--muted);
+  margin-top: 8px;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 5px;
+}
+
+.table-wrap {
+  overflow-x: auto;
+  margin: 30px 0;
+  border: 1px solid #d8c6a5;
+  border-radius: 6px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--white);
+  color: var(--text);
+  font-size: 14px;
+  min-width: 580px;
+}
+
+th {
+  background: var(--burgundy);
+  color: var(--cream);
+  text-align: left;
+  padding: 16px;
+}
+
+td {
+  padding: 16px;
+  border-bottom: 1px solid #e2d6bf;
+  vertical-align: top;
+}
+
+tr:nth-child(even) {
+  background: #f3ebde;
+}
+
+.highlight {
+  border-left: 4px solid var(--gold);
+  background: #efe4d0;
+  color: var(--text);
+  padding: 24px;
+  margin: 30px 0;
+}
+
+.highlight strong {
+  color: var(--burgundy);
+}
+
+.citation {
+  font-size: 13px;
+  color: #8a682e;
+  text-decoration: none;
+}
+
+.tabs {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin: 25px 0;
+}
+
+.tab {
+  border: 1px solid var(--burgundy);
+  background: transparent;
+  padding: 12px 22px;
+  border-radius: 4px;
+  color: var(--burgundy);
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.tab.active {
+  background: var(--burgundy);
+  color: white;
+}
+
+.instrument-panel[hidden] {
+  display: none;
+}
+
+.tag {
+  background: #eee3cb;
+  color: #654d26;
+  padding: 3px 10px;
+  font-size: 11px;
+  border-radius: 4px;
+  display: inline-block;
+}
+
+.notes {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  padding: 20px 0;
+}
+
+.note {
+  background: var(--burgundy);
+  color: var(--cream);
+  padding: 20px;
+  border-bottom: 4px solid var(--gold);
+  border-radius: 6px;
+  text-align: center;
+  min-width: 65px;
+}
+
+.note small {
+  display: block;
+  color: var(--gold);
+}
+
+.timeline {
+  border-left: 2px solid var(--gold);
+  margin-left: 12px;
+  padding-left: 30px;
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 30px;
+}
+
+.timeline-item::before {
+  content: "";
+  position: absolute;
+  left: -37px;
+  top: 10px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--gold);
+}
+
+.references p {
+  padding-left: 28px;
+  text-indent: -28px;
+  font-size: 14px;
+  overflow-wrap: anywhere;
+}
+
+#backTop {
+  position: fixed;
+  bottom: 22px;
+  right: 22px;
+  border: none;
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  background: var(--burgundy);
+  color: white;
+  cursor: pointer;
+  display: none;
+  z-index: 1100;
+}
+
+footer {
+  background: #241016;
+  color: var(--cream);
+  padding: 55px 25px;
+  text-align: center;
+  border-top: 2px solid var(--gold);
+}
+
+footer h2 {
+  color: var(--gold);
+}
+
+footer p {
+  font-size: 13px;
+}
+
+@media(max-width: 900px) {
+  .menu-button {
+    display: block;
+  }
+
+  .nav-links {
+    display: none;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 100%;
+    background: var(--dark);
+    padding: 25px;
+    flex-direction: column;
+  }
+
+  .nav-links.open {
+    display: flex;
+  }
+
+  .grid,
+  .grid-three {
+    grid-template-columns: 1fr;
+  }
+
+  .container {
+    padding: 50px 20px;
+  }
+}
+
+@media(prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+@media print {
+  header, #progress, #backTop, .button,
+  .tabs, footer {
+    display: none !important;
+  }
+
+  body, section, .card {
+    background: white !important;
+    color: black !important;
+  }
+
+  h1, h2, h3, a {
+    color: black !important;
+  }
+
+  .hero {
+    min-height: auto;
+    padding: 30px;
+  }
+
+  .hero p, .hero h1, .hero h2, .eyebrow {
+    color: black !important;
+  }
+
+  .container {
+    max-width: 100%;
+    padding: 20px 0;
+  }
+
+  .grid {
+    display: block;
+  }
+
+  .card {
+    margin-bottom: 15px;
+    break-inside: avoid;
+  }
+
+  table {
+    min-width: 0;
+    font-size: 10px;
+  }
+
+  th {
+    color: black;
+    background: #ddd;
+  }
+
+  td, th {
+    padding: 7px;
+  }
+
+  tr, figure {
+    break-inside: avoid;
+  }
+
+  .instrument-panel[hidden] {
+    display: block !important;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div id="progress"></div>
+
+<header>
+<nav>
+  <a class="logo" href="#utama">WARISAN NUSANTARA</a>
+
+  <button class="menu-button"
+    id="menuButton"
+    aria-label="Buka menu"
+    aria-expanded="false">☰</button>
+
+  <div class="nav-links" id="navLinks">
+    <a href="#utama">Utama</a>
+    <a href="#pengenalan">Pengenalan</a>
+    <a href="#organologi">Organologi</a>
+    <a href="#muzikal">Analisis Muzikal</a>
+    <a href="#sosiobudaya">Sosiobudaya</a>
+    <a href="#kajian">Kajian Lapangan</a>
+    <a href="#rumusan">Rumusan</a>
+    <a href="#rujukan">Rujukan</a>
+  </div>
+</nav>
+</header>
+
+<section class="hero" id="utama">
+<div class="hero-content">
+
+  <div class="eyebrow">
+    Dokumentasi Digital · MUZK3402 · 2026
+  </div>
+
+  <h1>CAKLEMPONG<br>& GAMELAN</h1>
+
+  <div class="ornament">◆</div>
+
+  <h2>
+    Analisis Perbandingan Organologi dan Sosiobudaya
+    Muzik Tradisional Melayu
+  </h2>
+
+  <p>
+    Dua Ensembel, Dua Tradisi, Satu Warisan Nusantara
+  </p>
+
+  <a class="button" href="#pengenalan">
+    Terokai Analisis ↓
+  </a>
+
+  <a class="button button-outline" href="#kajian">
+    Kajian Lapangan
+  </a>
+
+  <p style="margin-top:40px;font-size:13px">
+    Institut Pendidikan Guru Kampus Perlis
+  </p>
+
+</div>
+</section>
+
+<!-- PENGENALAN -->
+
+<section id="pengenalan">
+<div class="container">
+
+<div class="section-label">BAB 01 · MENGENALI WARISAN</div>
+<h2>1.0 Pengenalan dan Latar Belakang</h2>
+
+<p>
+Muzik tradisional merupakan salah satu manifestasi
+identiti budaya yang mencerminkan sejarah, pemikiran,
+nilai estetika dan kehidupan sesebuah masyarakat.
+Dalam konteks Malaysia, Caklempong dan Gamelan Melayu
+memperlihatkan hubungan antara perkembangan seni muzik
+dengan proses interaksi kebudayaan di rantau Nusantara.
+</p>
+
+<p>
+Kedua-dua ensembel mempunyai persamaan dari segi
+penggunaan instrumen idiofon, khususnya gong berbusut.
+Walau bagaimanapun, perbezaan instrumentasi, organisasi
+muzikal, sistem penalaan dan konteks sosiobudaya telah
+membentuk identiti tersendiri bagi setiap tradisi.
+</p>
+
+<div class="grid">
+
+<div class="card">
+  <figure>
+    <div class="placeholder">
+      <span>◇</span>
+      Masukkan gambar ensembel Caklempong
+    </div>
+    <figcaption>Rajah 1: Ensembel Caklempong.</figcaption>
+  </figure>
+
+  <div class="tag">Negeri Sembilan</div>
+  <h3>1.1 Caklempong</h3>
+
+  <p>
+  Caklempong merupakan seni muzik tradisional yang
+  mempunyai hubungan dengan kebudayaan Minangkabau
+  dari Sumatera Barat. Perkembangannya di Negeri
+  Sembilan memperlihatkan proses asimilasi dan
+  penyesuaian terhadap budaya masyarakat tempatan.
+  </p>
+
+  <p>
+  Persembahan Caklempong kini merangkumi majlis adat,
+  perkahwinan, acara rasmi, pendidikan dan program
+  kebudayaan.
+  <a class="citation" href="#ref-jkkn">
+  (JKKN, t.t.)</a>
+  </p>
+</div>
+
+<div class="card">
+  <figure>
+    <div class="placeholder">
+      <span>◇</span>
+      Masukkan gambar ensembel Gamelan Melayu
+    </div>
+    <figcaption>Rajah 2: Ensembel Gamelan Melayu.</figcaption>
+  </figure>
+
+  <div class="tag">Pahang dan Terengganu</div>
+  <h3>1.2 Gamelan Melayu</h3>
+
+  <p>
+  Gamelan Melayu berkembang dalam lingkungan
+  tradisi istana Melayu, khususnya di Pahang dan
+  Terengganu, serta mempunyai hubungan sejarah
+  dengan perkembangan muzik di rantau Nusantara.
+  </p>
+
+  <p>
+  Ensembel ini berkait rapat dengan Joget Gamelan.
+  Perkembangan kontemporari memperlihatkan
+  penggunaannya dalam pendidikan, persembahan
+  kebudayaan dan kegiatan kesenian.
+  <a class="citation" href="#ref-jafar">
+  (Jafar & Thiagarajan, 2023)</a>
+  </p>
+</div>
+
+</div>
+
+<h3>1.3 Latar Belakang Geografi</h3>
+
+<div class="grid">
+<div class="card">
+  <h3>Caklempong</h3>
+  <div class="timeline">
+    <div class="timeline-item">
+      <strong>Sumatera Barat</strong>
+      <p>Hubungan dengan tradisi Talempong Minangkabau.</p>
+    </div>
+    <div class="timeline-item">
+      <strong>Negeri Sembilan</strong>
+      <p>Perkembangan dan pembentukan identiti tempatan.</p>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <h3>Gamelan Melayu</h3>
+  <div class="timeline">
+    <div class="timeline-item">
+      <strong>Jawa dan Riau-Lingga</strong>
+      <p>Hubungan sejarah muzik dan seni persembahan.</p>
+    </div>
+    <div class="timeline-item">
+      <strong>Pahang dan Terengganu</strong>
+      <p>Perkembangan tradisi Gamelan Melayu dalam lingkungan istana.</p>
+    </div>
+  </div>
+</div>
+</div>
+
+<h3>1.4 Objektif Analisis</h3>
+
+<ol>
+<li>Mengenal pasti sejarah dan perkembangan kedua-dua ensembel.</li>
+<li>Menganalisis persamaan dan perbezaan dari aspek organologi.</li>
+<li>Membandingkan sistem penalaan, teknik permainan dan organisasi muzikal.</li>
+<li>Menganalisis peranan sosiobudaya dalam konteks tradisional dan kontemporari.</li>
+<li>Mengemukakan cadangan kelestarian melalui pendidikan muzik.</li>
+</ol>
+
+</div>
+</section>
+
+<!-- ORGANOLOGI -->
+
+<section class="section-alt" id="organologi">
+<div class="container">
+
+<div class="section-label">BAB 02 · STRUKTUR DAN BUNYI</div>
+<h2>2.0 Analisis Perbandingan Organologi</h2>
+
+<p>
+Organologi merupakan bidang kajian alat muzik yang
+melibatkan penelitian terhadap struktur fizikal,
+bahan binaan, klasifikasi, mekanisme penghasilan
+bunyi serta fungsi instrumen dalam sesuatu tradisi
+muzikal.
+</p>
+
+<h3>2.1 Klasifikasi Sachs–Hornbostel</h3>
+
+<p>
+Kedua-dua ensembel didominasi oleh instrumen idiofon,
+iaitu alat muzik yang menghasilkan bunyi melalui
+getaran badan instrumen itu sendiri. Instrumen
+membranofon pula digunakan bagi menyokong pola
+ritma dan penyelarasan ensembel.
+</p>
+
+<div class="table-wrap">
+<table>
+<thead>
+<tr>
+<th>Klasifikasi</th>
+<th>Caklempong</th>
+<th>Gamelan Melayu</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Idiofon</td>
+<td>Gereteh, tingkah, sauwa, canang dan gong</td>
+<td>Keromong, saron, gambang, kenong dan gong</td>
+</tr>
+<tr>
+<td>Membranofon</td>
+<td>Gendang ibu, gendang anak dan kompang jika digunakan</td>
+<td>Gendang</td>
+</tr>
+<tr>
+<td>Aerofon</td>
+<td>Bangsi atau serunai dalam konfigurasi tertentu</td>
+<td>Bukan komponen utama konfigurasi tradisional</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<h3>2.2 Penerokaan Instrumen</h3>
+
+<p>
+Pilih ensembel untuk meneroka instrumen dan
+fungsi muzikalnya. Konfigurasi sebenar boleh
+berbeza mengikut set, repertoir dan pengamal.
+</p>
+
+<div class="tabs">
+<button class="tab active"
+ onclick="showInstruments('caklempong',this)">
+ Caklempong
+</button>
+
+<button class="tab"
+ onclick="showInstruments('gamelan',this)">
+ Gamelan Melayu
+</button>
+</div>
+
+<div class="instrument-panel" id="caklempong-panel">
+<div class="grid grid-three">
+
+<div class="card">
+<div class="tag">Idiofon</div>
+<h3>Gereteh</h3>
+<p>Gong kecil berbusut yang berperanan memainkan melodi utama serta melodi tambahan mengikut susunan ensembel.</p>
+</div>
+
+<div class="card">
+<div class="tag">Idiofon</div>
+<h3>Tingkah</h3>
+<p>Menyokong melodi melalui corak iringan. Fungsi khususnya boleh melibatkan kord atau variasi ritma.</p>
+</div>
+
+<div class="card">
+<div class="tag">Idiofon</div>
+<h3>Sauwa</h3>
+<p>Menghasilkan pola iringan berulang atau ostinato bagi mewujudkan kesinambungan muzikal.</p>
+</div>
+
+<div class="card">
+<div class="tag">Idiofon</div>
+<h3>Canang</h3>
+<p>Menyokong bahagian bes atau daftar pic rendah dalam konfigurasi tertentu.</p>
+</div>
+
+<div class="card">
+<div class="tag">Membranofon</div>
+<h3>Gendang</h3>
+<p>Menghasilkan pola ritma, menyokong tempo dan membantu koordinasi persembahan.</p>
+</div>
+
+<div class="card">
+<div class="tag">Idiofon</div>
+<h3>Gong</h3>
+<p>Memberikan penegasan bunyi dan menyokong struktur persembahan.</p>
+</div>
+
+</div>
+</div>
+
+<div class="instrument-panel" id="gamelan-panel" hidden>
+<div class="grid grid-three">
+
+<div class="card">
+<div class="tag">Idiofon</div>
+<h3>Keromong</h3>
+<p>Gong berbusut yang disusun mendatar untuk memainkan melodi dan hiasan melodi.</p>
+</div>
+
+<div class="card">
+<div class="tag">Idiofon</div>
+<h3>Saron Barung</h3>
+<p>Instrumen berbilah logam yang memainkan melodi asas.</p>
+</div>
+
+<div class="card">
+<div class="tag">Idiofon</div>
+<h3>Saron Peking</h3>
+<p>Instrumen berbilah logam dalam daftar pic tinggi.</p>
+</div>
+
+<div class="card">
+<div class="tag">Idiofon</div>
+<h3>Saron Demung</h3>
+<p>Instrumen berbilah logam berdaftar rendah dalam konfigurasi yang menggunakannya.</p>
+</div>
+
+<div class="card">
+<div class="tag">Idiofon</div>
+<h3>Gambang</h3>
+<p>Instrumen berbilah kayu yang menghasilkan variasi melodi dan timbre tersendiri.</p>
+</div>
+
+<div class="card">
+<div class="tag">Idiofon</div>
+<h3>Kenong</h3>
+<p>Gong berbusut yang membantu menandakan bahagian struktur muzikal.</p>
+</div>
+
+<div class="card">
+<div class="tag">Idiofon</div>
+<h3>Gong Agung</h3>
+<p>Gong gantung yang memberikan penegasan pada struktur lagu.</p>
+</div>
+
+<div class="card">
+<div class="tag">Idiofon</div>
+<h3>Gong Suwukan</h3>
+<p>Gong gantung yang menyokong pembahagian struktur persembahan.</p>
+</div>
+
+<div class="card">
+<div class="tag">Membranofon</div>
+<h3>Gendang</h3>
+<p>Menyokong pola ritma dan membantu mengawal perjalanan persembahan.</p>
+</div>
+
+</div>
+</div>
+
+<h3>2.3 Perbandingan Struktur Fizikal</h3>
+
+<div class="table-wrap">
+<table>
+<thead>
+<tr>
+<th>Aspek</th>
+<th>Caklempong</th>
+<th>Gamelan Melayu</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Bentuk utama</td>
+<td>Gong kecil berbusut</td>
+<td>Gong berbusut, gong gantung dan instrumen berbilah</td>
+</tr>
+<tr>
+<td>Bahan binaan</td>
+<td>Logam, kayu dan membran mengikut instrumen</td>
+<td>Logam, kayu dan membran</td>
+</tr>
+<tr>
+<td>Kaedah permainan</td>
+<td>Pukulan menggunakan pemukul sesuai</td>
+<td>Pukulan dan redaman mengikut instrumen</td>
+</tr>
+<tr>
+<td>Kepelbagaian timbre</td>
+<td>Didominasi warna ton gong kecil</td>
+<td>Gabungan warna ton gong, bilah logam, kayu dan gendang</td>
+</tr>
+<tr>
+<td>Susunan</td>
+<td>Gong disusun mengikut daftar nada dan fungsi</td>
+<td>Instrumen disusun mengikut peranan muzikal</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<h3>2.4 Mekanik Getaran Akustik dan Timbre</h3>
+
+<div class="grid">
+
+<div class="card">
+<h3>Gong Berbusut</h3>
+<svg viewBox="0 0 300 180" width="100%" role="img"
+aria-label="Ilustrasi gong berbusut">
+<ellipse cx="150" cy="95" rx="110" ry="54"
+fill="#b48a43" stroke="#705020" stroke-width="4"/>
+<ellipse cx="150" cy="85" rx="42" ry="25"
+fill="#d2ad62" stroke="#705020" stroke-width="3"/>
+<ellipse cx="150" cy="85" rx="68" ry="37"
+fill="none" stroke="#fff2ba" stroke-dasharray="6 6"/>
+<path d="M150 5 V51" stroke="#541c2b" stroke-width="3"/>
+<path d="M141 43 L150 53 L159 43" fill="none"
+stroke="#541c2b" stroke-width="3"/>
+<text x="150" y="170" text-anchor="middle"
+font-size="12" fill="#541c2b">Getaran badan gong</text>
+</svg>
+<p>
+Pukulan menyebabkan badan gong bergetar.
+Bentuk, saiz dan bahan binaan mempengaruhi
+pic dan warna ton.
+</p>
+</div>
+
+<div class="card">
+<h3>Instrumen Berbilah</h3>
+<svg viewBox="0 0 300 180" width="100%" role="img"
+aria-label="Ilustrasi getaran bilah">
+<rect x="30" y="76" width="240" height="30"
+rx="5" fill="#b48a43"/>
+<path d="M30 70 Q90 40 150 70 T270 70"
+fill="none" stroke="#541c2b" stroke-width="2"
+stroke-dasharray="5 5"/>
+<path d="M30 112 Q90 142 150 112 T270 112"
+fill="none" stroke="#541c2b" stroke-width="2"
+stroke-dasharray="5 5"/>
+<text x="150" y="165" font-size="12" text-anchor="middle"
+fill="#541c2b">Ilustrasi getaran bilah</text>
+</svg>
+<p>
+Bilah logam dan kayu menghasilkan ciri
+spektrum bunyi yang berbeza. Teknik pukulan
+dan redaman turut mempengaruhi tempoh bunyi.
+</p>
+</div>
+
+</div>
+
+<p>
+Kajian akustik terhadap instrumen Gamelan Melayu
+menunjukkan bahawa ciri spektrum bunyi dapat
+berbeza antara instrumen dan set ensembel.
+Oleh itu, timbre tidak hanya ditentukan oleh jenis
+bahan, tetapi juga struktur fizikal dan penalaan.
+<a class="citation" href="#ref-hamdan">(Hamdan et al., 2020)</a>
+</p>
+
+<div class="highlight">
+<strong>Sintesis Organologi</strong>
+<p>
+Persamaan penggunaan gong berbusut memperlihatkan
+perkongsian teknologi muzik di Nusantara. Namun,
+kombinasi gong, bilah logam dan bilah kayu dalam
+Gamelan Melayu memberikan kepelbagaian timbre
+yang berbeza daripada struktur asas Caklempong.
+</p>
+</div>
+
+</div>
+</section>
+
+<!-- ANALISIS MUZIKAL -->
+
+<section id="muzikal">
+<div class="container">
+
+<div class="section-label">BAB 03 · MELODI DAN ENSEMBEL</div>
+<h2>3.0 Analisis Perbandingan Muzikal</h2>
+
+<h3>3.1 Sistem Penalaan</h3>
+
+<div class="grid">
+<div class="card">
+<h3>Pentatonik</h3>
+<div class="notes">
+<div class="note">C<small>Do</small></div>
+<div class="note">D<small>Re</small></div>
+<div class="note">E<small>Mi</small></div>
+<div class="note">G<small>So</small></div>
+<div class="note">A<small>La</small></div>
+</div>
+<p>Contoh konseptual skala lima nada.</p>
+</div>
+
+<div class="card">
+<h3>Diatonik</h3>
+<div class="notes">
+<div class="note">C</div>
+<div class="note">D</div>
+<div class="note">E</div>
+<div class="note">F</div>
+<div class="note">G</div>
+<div class="note">A</div>
+<div class="note">B</div>
+</div>
+<p>Contoh konseptual skala tujuh nada.</p>
+</div>
+</div>
+
+<p>
+Caklempong mempunyai hubungan dengan tradisi
+pentatonik, manakala perkembangan konfigurasi
+moden turut memperlihatkan penggunaan penalaan
+diatonik. Gamelan Melayu pula lazimnya
+dikaitkan dengan sistem penalaan pentatonik.
+<a class="citation" href="#ref-jkkn">(JKKN, t.t.)</a>
+</p>
+
+<div class="highlight">
+<strong>Nota Penalaan</strong>
+<p>
+Rajah di atas ialah contoh pendidikan menggunakan
+notasi Barat. Ia bukan representasi ukuran frekuensi
+sebenar atau bukti bahawa laras Gamelan Melayu
+menyamai sistem equal temperament Barat.
+</p>
+</div>
+
+<h3>3.2 Teknik Permainan</h3>
+
+<div class="grid">
+<div class="card">
+<h3>Caklempong</h3>
+<ul>
+<li>Ketepatan pukulan pada busut bonang.</li>
+<li>Kawalan pergelangan tangan.</li>
+<li>Kawalan daya pukulan.</li>
+<li>Koordinasi kedua-dua tangan.</li>
+<li>Penguasaan pola iringan berulang.</li>
+<li>Penyelarasan tempo antara pemain.</li>
+</ul>
+<p>
+Teknik garitik gereteh memperlihatkan penggunaan
+hiasan melodi, manakala permainan saling melengkapi
+menyumbang kepada pembentukan jalinan muzikal.
+<a class="citation" href="#ref-upm">(UPM, 2023)</a>
+</p>
+</div>
+
+<div class="card">
+<h3>Gamelan Melayu</h3>
+<ul>
+<li>Pukulan pada gong dan bilah.</li>
+<li>Redaman bunyi mengikut instrumen.</li>
+<li>Penguasaan melodi asas.</li>
+<li>Hiasan melodi keromong dan gambang.</li>
+<li>Penyelarasan ritma gendang.</li>
+<li>Penegasan struktur melalui gong dan kenong.</li>
+</ul>
+<p>
+Teknik permainan keromong dan gambang
+memperlihatkan kepentingan variasi serta
+pengolahan melodi dalam tradisi Gamelan Melayu.
+<a class="citation" href="#ref-iskandar">
+(Iskandar & Salleh, 2021)</a>
+</p>
+</div>
+</div>
+
+<h3>3.3 Organisasi Permainan Ensembel</h3>
+
+<div class="table-wrap">
+<table>
+<thead>
+<tr>
+<th>Fungsi Muzikal</th>
+<th>Caklempong</th>
+<th>Gamelan Melayu</th>
+</tr>
+</thead>
+<tbody>
+<tr><td>Melodi</td><td>Gereteh</td><td>Saron</td></tr>
+<tr><td>Iringan dan hiasan</td><td>Tingkah dan sauwa</td><td>Keromong dan gambang</td></tr>
+<tr><td>Daftar rendah</td><td>Canang jika digunakan</td><td>Instrumen berdaftar rendah mengikut set</td></tr>
+<tr><td>Ritma</td><td>Gendang</td><td>Gendang</td></tr>
+<tr><td>Penegasan struktur</td><td>Gong</td><td>Kenong dan gong</td></tr>
+</tbody>
+</table>
+</div>
+
+<h3>3.4 Perbandingan Elemen Muzik</h3>
+
+<div class="table-wrap">
+<table>
+<thead>
+<tr>
+<th>Elemen</th>
+<th>Caklempong</th>
+<th>Gamelan Melayu</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Melodi</td>
+<td>Melodi utama dengan variasi mengikut repertoir</td>
+<td>Melodi asas dengan pengolahan dan hiasan</td>
+</tr>
+<tr>
+<td>Irama</td>
+<td>Pola berulang dan iringan saling melengkapi</td>
+<td>Lapisan ritma dan penanda struktur</td>
+</tr>
+<tr>
+<td>Tempo</td>
+<td>Bergantung pada lagu dan persembahan</td>
+<td>Bergantung pada lagu dan persembahan</td>
+</tr>
+<tr>
+<td>Tekstur</td>
+<td>Gabungan melodi, iringan dan ritma</td>
+<td>Gabungan melodi asas, hiasan dan struktur</td>
+</tr>
+<tr>
+<td>Timbre</td>
+<td>Didominasi gong kecil berbusut</td>
+<td>Gabungan gong, logam, kayu dan membran</td>
+</tr>
+<tr>
+<td>Pembelajaran</td>
+<td>Demonstrasi, peniruan dan latihan</td>
+<td>Tradisi lisan, demonstrasi dan latihan</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="highlight">
+<strong>Sintesis Muzikal</strong>
+<p>
+Kedua-dua ensembel bergantung pada pembahagian
+tanggungjawab muzik dan koordinasi kolektif.
+Perbezaannya dapat diperhatikan melalui cara
+melodi dikembangkan, pola iringan dibentuk dan
+struktur muzik ditegaskan oleh instrumen.
+</p>
+</div>
+
+</div>
+</section>
+
+<!-- SOSIOBUDAYA -->
+
+<section class="section-alt" id="sosiobudaya">
+<div class="container">
+
+<div class="section-label">BAB 04 · MUZIK DAN MASYARAKAT</div>
+<h2>4.0 Analisis Perbandingan Sosiobudaya</h2>
+
+<h3>4.1 Identiti dan Fungsi Budaya</h3>
+
+<p>
+Caklempong mencerminkan hubungan sejarah
+masyarakat Negeri Sembilan dengan warisan
+Minangkabau. Gamelan Melayu pula memperlihatkan
+perkembangan seni persembahan dalam lingkungan
+istana Melayu, khususnya melalui Joget Gamelan.
+</p>
+
+<p>
+Walaupun mempunyai latar perkembangan berbeza,
+kedua-duanya tidak wajar dikategorikan secara
+mutlak sebagai muzik rakyat atau muzik istana.
+Perubahan sosial telah memperluas konteks
+persembahan kedua-dua tradisi.
+</p>
+
+<div class="table-wrap">
+<table>
+<thead>
+<tr>
+<th>Aspek</th>
+<th>Caklempong</th>
+<th>Gamelan Melayu</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Pengaruh budaya</td>
+<td>Minangkabau</td>
+<td>Tradisi gamelan Nusantara dan istana Melayu</td>
+</tr>
+<tr>
+<td>Kawasan utama</td>
+<td>Negeri Sembilan</td>
+<td>Pahang dan Terengganu</td>
+</tr>
+<tr>
+<td>Konteks persembahan</td>
+<td>Adat, perkahwinan, acara rasmi dan kebudayaan</td>
+<td>Istana, Joget Gamelan dan persembahan kebudayaan</td>
+</tr>
+<tr>
+<td>Fungsi sosial</td>
+<td>Hiburan dan pengukuhan identiti masyarakat</td>
+<td>Ekspresi seni, identiti budaya dan persembahan</td>
+</tr>
+<tr>
+<td>Pewarisan</td>
+<td>Pembelajaran bersama pengamal</td>
+<td>Tradisi lisan dan bimbingan guru</td>
+</tr>
+<tr>
+<td>Adaptasi moden</td>
+<td>Pertandingan, sekolah dan festival</td>
+<td>Pendidikan, festival dan gubahan kontemporari</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<h3>4.2 Pewarisan Tradisi</h3>
+
+<p>
+Pewarisan pengetahuan dalam kedua-dua ensembel
+melibatkan pendengaran, pemerhatian, demonstrasi,
+peniruan dan latihan berulang. Kaedah tersebut
+membolehkan pelajar menguasai kemahiran muzik
+secara praktikal melalui interaksi bersama
+pengamal yang berpengalaman.
+</p>
+
+<h3>4.3 Adaptasi dan Cabaran Kontemporari</h3>
+
+<div class="grid">
+
+<div class="card">
+<h3>Adaptasi</h3>
+<ul>
+<li>Pendidikan muzik formal.</li>
+<li>Aktiviti kokurikulum.</li>
+<li>Festival dan pertandingan.</li>
+<li>Dokumentasi digital.</li>
+<li>Pengolahan repertoir kontemporari.</li>
+</ul>
+</div>
+
+<div class="card">
+<h3>Cabaran</h3>
+<ul>
+<li>Pendedahan generasi muda.</li>
+<li>Ketersediaan tenaga pengajar.</li>
+<li>Kekangan latihan ensembel.</li>
+<li>Penyelenggaraan instrumen.</li>
+<li>Keseimbangan antara tradisi dan inovasi.</li>
+</ul>
+</div>
+
+</div>
+
+<p>
+Pendidikan formal dan latihan sistematik
+berpotensi menyokong kesinambungan warisan
+muzik tradisional. Namun, inovasi perlu
+dilaksanakan dengan mengambil kira identiti,
+fungsi dan konteks asal tradisi tersebut.
+</p>
+
+</div>
+</section>
+
+<!-- KAJIAN LAPANGAN -->
+
+<section id="kajian">
+<div class="container">
+
+<div class="section-label">BAB 05 · DOKUMENTASI DAN PENGAMAL</div>
+<h2>5.0 Kajian Lapangan</h2>
+
+<h3>5.1 Kaedah Pengumpulan Maklumat</h3>
+
+<div class="grid">
+<div class="card">
+<h3>Caklempong</h3>
+<p>
+Maklumat diperoleh melalui dokumentasi temu
+bual pengamal Caklempong secara dalam talian
+dan disokong oleh sumber literatur berkaitan.
+</p>
+</div>
+
+<div class="card">
+<h3>Gamelan Melayu</h3>
+<p>
+Pendedahan awal diperoleh melalui bengkel
+Gamelan. Analisis terperinci dalam kajian
+ini disokong terutamanya oleh sumber
+akademik dan dokumentasi kebudayaan.
+</p>
+</div>
+</div>
+
+<h3>5.2 Profil Tokoh Caklempong</h3>
+
+<div class="grid">
+
+<div>
+<figure>
+<div class="placeholder">
+<span>◇</span>
+Masukkan gambar tokoh Caklempong
+</div>
+<figcaption>Rajah 3: Tokoh yang ditemu bual.</figcaption>
+</figure>
+</div>
+
+<div>
+<div class="tag">Pengamal Muzik Tradisional</div>
+<h3>Muhammad Amirul Najmi bin Shamsudin</h3>
+<p>
+Berasal dari Rantau, Negeri Sembilan.
+Berdasarkan dokumentasi profil, beliau
+mula melibatkan diri dalam muzik sejak
+sekolah rendah dan seterusnya mendalami
+permainan Caklempong.
+</p>
+<p>
+Pengalaman beliau merangkumi persembahan,
+pertandingan, pembelajaran muzik dan
+pengolahan repertoir Caklempong.
+</p>
+
+<a class="button"
+href="https://sites.google.com/moe-dl.edu.my/suarawarisan-senimuzikcaklempo/profil-tokoh"
+target="_blank" rel="noopener">
+Lihat Dokumentasi Tokoh
+</a>
+</div>
+
+</div>
+
+<h3>5.3 Maklumat Temu Bual</h3>
+
+<div class="table-wrap">
+<table>
+<tbody>
+<tr><th>Tarikh dilaporkan</th><td>19 November 2026</td></tr>
+<tr><th>Kaedah</th><td>Temu bual dalam talian</td></tr>
+<tr><th>Platform</th><td>Google Meet</td></tr>
+<tr><th>Fokus</th><td>Sejarah, organologi, teknik permainan dan kelestarian</td></tr>
+</tbody>
+</table>
+</div>
+
+<h3>5.4 Dapatan Dokumentasi Temu Bual</h3>
+
+<div class="grid grid-three">
+
+<div class="card">
+<h3>Sejarah</h3>
+<p>Hubungan Caklempong dengan tradisi Minangkabau dan perkembangan identiti tempatan.</p>
+</div>
+
+<div class="card">
+<h3>Teknik</h3>
+<p>Kepentingan ketepatan pukulan, koordinasi tangan dan kawalan daya pukulan.</p>
+</div>
+
+<div class="card">
+<h3>Ensembel</h3>
+<p>Keperluan menguasai fungsi instrumen dan penyelarasan tempo secara berkumpulan.</p>
+</div>
+
+<div class="card">
+<h3>Sosiobudaya</h3>
+<p>Perkembangan konteks persembahan dalam majlis adat, sosial dan kebudayaan.</p>
+</div>
+
+<div class="card">
+<h3>Pewarisan</h3>
+<p>Pembelajaran melalui demonstrasi, pemerhatian dan latihan bersama pengamal.</p>
+</div>
+
+<div class="card">
+<h3>Kelestarian</h3>
+<p>Kepentingan pendedahan generasi muda terhadap muzik tradisional.</p>
+</div>
+
+</div>
+
+<p>
+Dapatan di atas dirumuskan daripada dokumentasi
+digital yang dirujuk dan tidak merupakan
+petikan verbatim temu bual.
+<a class="citation" href="#ref-dokumentasi">
+(Dokumentasi Suara Warisan, t.t.)</a>
+</p>
+
+<h3>5.5 Dokumentasi Bengkel Gamelan Melayu</h3>
+
+<figure>
+<div class="placeholder">
+<span>◇</span>
+Masukkan gambar bengkel Gamelan Melayu di sini
+</div>
+<figcaption>Rajah 4: Dokumentasi bengkel Gamelan Melayu.</figcaption>
+</figure>
+
+<p>
+Bengkel Gamelan memberikan pendedahan awal
+kepada tradisi permainan ensembel tersebut.
+Disebabkan tempoh bengkel yang terhad, huraian
+organologi, muzikal dan sosiobudaya dalam
+kajian ini tidak dianggap sebagai dapatan
+pemerhatian menyeluruh, sebaliknya disokong
+melalui sorotan literatur.
+</p>
+
+<h3>5.6 Video Mini Dokumentari</h3>
+
+<div class="grid">
+<div class="card">
+<div class="placeholder">
+<span>▷</span>
+Video Temu Bual Caklempong
+</div>
+
+<a class="button"
+href="https://sites.google.com/moe-dl.edu.my/suarawarisan-senimuzikcaklempo/video-mini-dokumenteri"
+target="_blank" rel="noopener">
+Buka Dokumentasi
+</a>
+</div>
+
+<div class="card">
+<div class="placeholder">
+<span>▷</span>
+Video Bengkel Gamelan Melayu
+</div>
+<p>Ruangan untuk memasukkan rakaman bengkel jika tersedia.</p>
+</div>
+</div>
+
+</div>
+</section>
+
+<!-- RUMUSAN -->
+
+<section class="section-dark" id="rumusan">
+<div class="container">
+
+<div class="section-label">BAB 06 · MASA HADAPAN WARISAN</div>
+<h2>6.0 Rumusan dan Cadangan Kelestarian</h2>
+
+<p>
+Analisis perbandingan menunjukkan bahawa
+Caklempong dan Gamelan Melayu merupakan
+dua tradisi muzik yang mempunyai hubungan
+dengan warisan kebudayaan Nusantara.
+Persamaan penggunaan instrumen idiofon
+dan organisasi ensembel memperlihatkan
+kepentingan teknologi muzik, kerjasama
+dan pembahagian fungsi antara pemuzik.
+</p>
+
+<p>
+Walau bagaimanapun, perbezaan sejarah,
+instrumentasi, organisasi melodi, sistem
+penalaan dan konteks persembahan telah
+membentuk identiti muzik yang tersendiri.
+Perbezaan tersebut merupakan manifestasi
+kepelbagaian budaya dan kreativiti masyarakat.
+</p>
+
+<h3>6.1 Cadangan Kelestarian</h3>
+
+<div class="grid grid-three">
+
+<div class="card">
+<h3>01. Pendidikan</h3>
+<p>Mengintegrasikan muzik tradisional dalam pengajaran formal dan aktiviti kokurikulum.</p>
+</div>
+
+<div class="card">
+<h3>02. Bengkel</h3>
+<p>Melibatkan pengamal berpengalaman dalam latihan dan demonstrasi secara berkala.</p>
+</div>
+
+<div class="card">
+<h3>03. Dokumentasi</h3>
+<p>Merekod teknik permainan, sejarah dan repertoir melalui media digital.</p>
+</div>
+
+<div class="card">
+<h3>04. Festival</h3>
+<p>Memperluas peluang persembahan dan pertandingan untuk generasi muda.</p>
+</div>
+
+<div class="card">
+<h3>05. Inovasi</h3>
+<p>Menggalakkan kreativiti muzik tanpa mengabaikan identiti tradisi.</p>
+</div>
+
+<div class="card">
+<h3>06. Latihan Guru</h3>
+<p>Memperkukuh kemahiran bakal guru dalam pengajaran muzik tradisional.</p>
+</div>
+
+</div>
+
+<h3>6.2 Implikasi Pendidikan Muzik Sekolah Rendah</h3>
+
+<p>
+Caklempong dan Gamelan Melayu boleh digunakan
+sebagai medium pendidikan untuk memperkenalkan
+konsep timbre, pic, ritma, tempo, melodi,
+ostinato dan permainan ensembel.
+</p>
+
+<p>
+Aktiviti mendengar, demonstrasi instrumen,
+peniruan pola ritma serta permainan secara
+berkumpulan dapat membantu murid memahami
+elemen muzik secara praktikal di samping
+memupuk penghargaan terhadap warisan budaya.
+</p>
+
+<h3>6.3 Kesimpulan</h3>
+
+<p>
+Kelestarian Caklempong dan Gamelan Melayu
+memerlukan kerjasama antara pengamal,
+institusi pendidikan, masyarakat dan
+agensi kebudayaan. Pendidikan, dokumentasi
+serta inovasi yang menghormati identiti
+tradisional mampu memastikan kedua-dua
+warisan muzik ini terus berkembang dalam
+kehidupan generasi akan datang.
+</p>
+
+</div>
+</section>
+
+<!-- RUJUKAN -->
+
+<section id="rujukan">
+<div class="container references">
+
+<div class="section-label">BAB 07 · SUMBER AKADEMIK</div>
+<h2>7.0 Senarai Rujukan</h2>
+
+<div class="highlight">
+<strong>Nota penyuntingan</strong>
+<p>
+Senarai ini ialah bibliografi kerja.
+Sahkan metadata pengarang, tahun, judul,
+jilid dan halaman dengan penerbit asal
+sebelum penghantaran tugasan.
+</p>
+</div>
+
+<p id="ref-amin">
+Amin et al. (2017).
+<i>Komunikasi, instrumentasi dan seni persembahan
+gamelan Melayu dan Jawa.</i>
+<a href="https://ejournal.ukm.my/jmelayu/article/download/22705/7180"
+target="_blank" rel="noopener">Artikel jurnal</a>.
+</p>
+
+<p>
+Amin et al. (2019).
+<i>Pembangunan model pengajaran gamelan Melayu
+peringkat sekolah menengah rendah di Malaysia.</i>
+<a href="https://doi.org/10.17576/akad-2019-8901-15"
+target="_blank" rel="noopener">DOI</a>.
+</p>
+
+<p>
+Baharum. (2008).
+<i>A study of problems faced by secondary
+school music teachers in teaching caklempong.</i>
+<a href="https://ir.uitm.edu.my/id/eprint/77333/"
+target="_blank" rel="noopener">Repositori UiTM</a>.
+</p>
+
+<p id="ref-dokumentasi">
+Dokumentasi Suara Warisan. (t.t.).
+<i>Suara warisan: Seni muzik Caklempong.</i>
+<a href="https://sites.google.com/moe-dl.edu.my/suarawarisan-senimuzikcaklempo"
+target="_blank" rel="noopener">Google Sites</a>.
+</p>
+
+<p id="ref-hamdan">
+Hamdan et al. (2020).
+<i>Timbre spectrum of gamelan instruments
+from four Malay gamelan ensembles.</i>
+<a href="https://cendekia.unisza.edu.my/neuaxis-e/Record/upm-38307/Description"
+target="_blank" rel="noopener">Rekod artikel</a>.
+</p>
+
+<p id="ref-iskandar">
+Iskandar & Salleh. (2021).
+<i>Malay gamelan: Playing techniques
+of the keromong and gambang.</i>
+<a href="https://doi.org/10.35631/IJCREI.38001"
+target="_blank" rel="noopener">DOI</a>.
+</p>
+
+<p id="ref-jkkn">
+Jabatan Kebudayaan dan Kesenian Negara. (t.t.).
+<i>Muzik Caklempong.</i>
+<a href="https://pemetaanbudaya.jkkn.gov.my/senibudaya/detail/736"
+target="_blank" rel="noopener">Portal Pemetaan Budaya</a>.
+</p>
+
+<p id="ref-jafar">
+Jafar, N., & Thiagarajan, P. (2023).
+<i>Performing Joget Gamelan through archives
+and social memory.</i>
+<a href="https://doi.org/10.1080/23311983.2023.2254043"
+target="_blank" rel="noopener">DOI</a>.
+</p>
+
+<p>
+Matusky, P., & Tan, S. B. (2017).
+<i>The music of Malaysia: The classical,
+folk and syncretic traditions</i> (2nd ed.).
+Routledge.
+</p>
+
+<p>
+Shah & Saidon. (2017).
+<i>Developing a graded examination
+for the Malay gamelan.</i>
+<a href="https://doi.org/10.37134/mjm.vol6.1.2.2017"
+target="_blank" rel="noopener">DOI</a>.
+</p>
+
+<p id="ref-upm">
+Universiti Putra Malaysia. (2023).
+<i>Caklempong gaya Malaysia.</i>
+<a href="https://pkpp.upm.edu.my/artikel/caklempong_gaya_malaysia-73709"
+target="_blank" rel="noopener">Artikel UPM</a>.
+</p>
+
+<button class="button" onclick="window.print()">
+Cetak / Simpan PDF
+</button>
+
+</div>
+</section>
+
+<footer>
+
+<div class="ornament">◆</div>
+
+<h2>CAKLEMPONG & GAMELAN</h2>
+
+<p>
+Dokumentasi Digital dan Analisis Perbandingan<br>
+Warisan Muzik Tradisional Melayu
+</p>
+
+<p>
+MUZK3402<br>
+Institut Pendidikan Guru Kampus Perlis
+</p>
+
+<p>
+Disediakan oleh: [Nama Ahli Kumpulan]<br>
+Pensyarah: [Nama Pensyarah]
+</p>
+
+<p>2026 · Projek Akademik Pendidikan Muzik</p>
+
+</footer>
+
+<button id="backTop"
+aria-label="Kembali ke atas"
+onclick="window.scrollTo({top:0,behavior:'smooth'})">
+↑
+</button>
+
+<script>
+
+const menuButton = document.getElementById('menuButton');
+const navLinks = document.getElementById('navLinks');
+
+menuButton.addEventListener('click', function() {
+  const opened = navLinks.classList.toggle('open');
+  menuButton.setAttribute('aria-expanded', opened);
+});
+
+document.querySelectorAll('.nav-links a').forEach(link => {
+  link.addEventListener('click', function() {
+    navLinks.classList.remove('open');
+    menuButton.setAttribute('aria-expanded', 'false');
+  });
+});
+
+function showInstruments(name, button) {
+  document.querySelectorAll('.instrument-panel')
+    .forEach(panel => panel.hidden = true);
+
+  document.querySelectorAll('.tab')
+    .forEach(tab => tab.classList.remove('active'));
+
+  document.getElementById(name + '-panel').hidden = false;
+  button.classList.add('active');
+}
+
+window.addEventListener('scroll', function() {
+  const height = document.documentElement.scrollHeight
+    - window.innerHeight;
+
+  const progress = height > 0
+    ? window.scrollY / height * 100 : 0;
+
+  document.getElementById('progress').style.width =
+    Math.min(100, progress) + '%';
+
+  document.getElementById('backTop').style.display =
+    window.scrollY > 500 ? 'block' : 'none';
+
+  let current = '';
+
+  document.querySelectorAll('section[id]').forEach(section => {
+    if (window.scrollY >= section.offsetTop - 160) {
+      current = section.id;
+    }
+  });
+
+  document.querySelectorAll('.nav-links a').forEach(link => {
+    link.classList.toggle(
+      'active',
+      link.getAttribute('href') === '#' + current
+    );
+  });
+});
+
+</script>
+
+</body>
+</html>
